@@ -114,7 +114,7 @@ export default function App() {
   return (
     <>
       <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-        <div className="w-full max-w-3xl bg-gray-800 p- 6 rounded-2xl shadow-xl border border-gray-700">
+        <div className="w-full max-w-3xl bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
 
           <h1 className="text-3xl font-semibold text-white text-center mb-6">
             Typing Speed Test
@@ -169,7 +169,8 @@ export default function App() {
           <textarea
             value={input}
             onChange={handleTyping}
-            disabled={timeLeft === 0 && isRunning}
+           disabled={!isRunning && showResult}
+
             placeholder="Start typing here..."
             className="w-full h-32 p-4   bg-gray-900 text-white rounded-xl border border-gray-700 resize-none"
           />
