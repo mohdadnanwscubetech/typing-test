@@ -169,7 +169,7 @@ export default function App() {
           <textarea
             value={input}
             onChange={handleTyping}
-           disabled={!isRunning && showResult}
+            disabled={!isRunning && showResult}
 
             placeholder="Start typing here..."
             className="w-full h-32 p-4   bg-gray-900 text-white rounded-xl border border-gray-700 resize-none"
@@ -195,11 +195,24 @@ export default function App() {
 
             <h2 className="text-2xl font-semibold mb-4 text-center">Test Results</h2>
 
-            <p className="mb-2">Words Per Minute: <span className="text-green-400">{wpm}</span></p>
-            <p className="mb-2">Accuracy: <span className="text-blue-400">{accuracy}%</span></p>
-            <p className="mb-2">Correct Characters: <span className="text-green-300">{correctChars}</span></p>
-            <p className="mb-2">Wrong Characters: <span className="text-red-400">{wrongChars}</span></p>
-            <p className="mb-2">Total Typed: {correctChars + wrongChars}</p>
+            {/* Gross WPM */}
+            <div className="mb-3">
+              <p className="text-gray-300 text-sm">Typing Speed</p>
+              <p className="text-green-400 text-3xl font-bold">{wpm} WPM</p>
+            </div>
+
+            {/* Accuracy */}
+            <div className="mb-3">
+              <p className="text-gray-300 text-sm">Accuracy</p>
+              <p className="text-blue-400 text-3xl font-bold">{accuracy}%</p>
+            </div>
+
+            {/* Net Speed = Gross WPM - Mistakes */}
+            <div className="mb-3">
+              <p className="text-gray-300 text-sm">Net Speed</p>
+              <p className="text-yellow-400 text-3xl font-bold">{wpm - Math.round(wrongChars / 5)} WPM
+</p>
+            </div>
 
             <button
               onClick={resetTest}
@@ -211,6 +224,7 @@ export default function App() {
           </div>
         </div>
       )}
+
     </>
   )
 }
